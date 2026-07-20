@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Removed
+
+- Extracted caveman mode to a standalone plugin (`@oh-my-pi/caveman-plugin`). Install via `omp plugin install @oh-my-pi/caveman-plugin` to restore the `/caveman` command and status bar indicator.
+
 ## [17.0.5] - 2026-07-18
 
 ### Added

@@ -127,13 +127,6 @@ const CONDITIONS: Record<string, () => boolean> = {
 			return false;
 		}
 	},
-	cavemanActive: () => {
-		try {
-			return Settings.instance.get("caveman.level") !== "off";
-		} catch {
-			return false;
-		}
-	},
 };
 
 // ═══════════════════════════════════════════════════════════════════════════

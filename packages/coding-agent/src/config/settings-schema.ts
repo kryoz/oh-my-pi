@@ -4759,8 +4759,7 @@ export const SETTINGS_SCHEMA = {
 			tab: "interaction",
 			group: "Agent",
 			label: "Caveman Status Bar",
-			description: "Show animated caveman level indicator in the status bar",
-			condition: "cavemanActive",
+			description: "Show caveman level indicator in the status bar",
 		},
 	},
 	"providers.unexpectedStopModel": {

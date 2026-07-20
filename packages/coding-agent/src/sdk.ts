@@ -38,7 +38,6 @@ import { createAutoresearchExtension } from "./autoresearch";
 import { loadCapability } from "./capability";
 import { type Rule, ruleCapability, setActiveRules } from "./capability/rule";
 import { bucketRules } from "./capability/rule-buckets";
-import { createCavemanExtension } from "./caveman";
 import { shouldEnableAppendOnlyContext } from "./config/append-only-context-mode";
 import { shouldInlineToolDescriptors } from "./config/inline-tool-descriptors-mode";
 import { isAuthenticated, kNoAuth, ModelRegistry } from "./config/model-registry";
@@ -1933,15 +1932,11 @@ export async function createAgentSession(options: CreateAgentSessionOptions = {}
 			}
 
 			inlineExtensions.push(...(options.extensions ?? []));
-			inlineExtensions.push(createAutoresearchExtension, createCavemanExtension);
+			inlineExtensions.push(createAutoresearchExtension);
 			if (customTools.length > 0) {
 				inlineExtensions.push(createCustomToolsExtension(customTools));
 			}
 		}
-		// Caveman extension always loads — it only injects system prompt rules
-		// and a slash command, no tools. Lite mode restricts tools, not prompt
-		// compression.
-		inlineExtensions.push(createCavemanExtension);
 		// Forward the path list (NOT the loaded tools) to subagents so they
 		// re-bind under their own `CustomToolAPI` while skipping the FS scan.
 		toolSession.customToolPaths = customToolPaths;
