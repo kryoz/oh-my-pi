@@ -56,6 +56,7 @@ import { scheduleMarketplaceAutoUpdate } from "./extensibility/plugins/marketpla
 import { registerDaemonProjectPresence } from "./launch/presence";
 import type { MCPManager } from "./mcp";
 import { InteractiveMode } from "./modes/interactive-mode";
+import { LITE_SETTINGS_OVERRIDES, LITE_TOOL_NAMES } from "./modes/lite-mode";
 import type { PrintModeOptions } from "./modes/print-mode";
 import { claimRpcInput } from "./modes/rpc/rpc-input";
 import { CURRENT_SETUP_VERSION } from "./modes/setup-version";
@@ -1021,7 +1022,16 @@ export async function buildSessionOptions(
 	}
 
 	// Tools
-	if (parsed.noTools) {
+	const isLiteMode = $env.OMP_LITE !== "0";
+	if (isLiteMode) {
+		options.toolNames = [...LITE_TOOL_NAMES];
+		options.restrictToolNames = true;
+		options.liteMode = true;
+		options.enableMCP = false;
+		for (const [key, value] of LITE_SETTINGS_OVERRIDES) {
+			activeSettings.override(key, value as never);
+		}
+	} else if (parsed.noTools) {
 		options.toolNames = parsed.tools && parsed.tools.length > 0 ? parsed.tools : [];
 	} else if (parsed.tools) {
 		options.toolNames = parsed.tools;

@@ -431,6 +431,7 @@ export function createAcpExtensionUiContext(
 		},
 		onTerminalInput: () => () => {},
 		setStatus: () => {},
+		setCavemanModeStatus: () => {},
 		setWorkingMessage: () => {},
 		setWidget: () => {},
 		setFooter: () => {},

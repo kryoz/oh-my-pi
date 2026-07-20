@@ -775,6 +775,10 @@ export async function runRpcMode(
 			} as RpcExtensionUIRequest);
 		}
 
+		setCavemanModeStatus(_level: string | undefined): void {
+			// Not supported in RPC mode
+		}
+
 		setWorkingMessage(_message?: string): void {
 			// Not supported in RPC mode
 		}

@@ -263,6 +263,12 @@ const modeSegment: StatusLineSegment = {
 			return { content: theme.fg(color, parts.join(" ")), visible: true };
 		}
 
+		const caveman = ctx.cavemanMode;
+		if (caveman) {
+			const content = withIcon(theme.icon.campfire, caveman.level);
+			return { content: theme.fg("accent", content), visible: true };
+		}
+
 		return { content: "", visible: false };
 	},
 };

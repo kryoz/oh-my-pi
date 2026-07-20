@@ -252,6 +252,9 @@ export interface ExtensionUIContext {
 	/** Set status text in the footer/status bar. Pass undefined to clear. */
 	setStatus(key: string, text: string | undefined): void;
 
+	/** Set caveman mode level for the status line mode segment. Pass undefined to clear. */
+	setCavemanModeStatus(level: string | undefined): void;
+
 	/** Set the working/loading message shown during streaming. Call with no argument to restore default. */
 	setWorkingMessage(message?: string): void;
 

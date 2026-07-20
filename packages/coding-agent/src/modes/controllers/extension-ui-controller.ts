@@ -86,6 +86,7 @@ export class ExtensionUiController {
 			notify: (message, type) => this.showHookNotify(message, type),
 			onTerminalInput: handler => this.addExtensionTerminalInputListener(handler),
 			setStatus: (key, text) => this.setHookStatus(key, text),
+			setCavemanModeStatus: level => this.setCavemanModeStatus(level),
 			setWorkingMessage: message => this.ctx.setWorkingMessage(message),
 			setWidget: (key, content, options) => this.setHookWidget(key, content, options),
 			setTitle: title => setTerminalTitle(title),
@@ -523,6 +524,14 @@ export class ExtensionUiController {
 	 */
 	setHookStatus(key: string, text: string | undefined): void {
 		this.ctx.statusLine.setHookStatus(key, text);
+		this.ctx.ui.requestRender();
+	}
+
+	/**
+	 * Set caveman mode level in the status line mode segment.
+	 */
+	setCavemanModeStatus(level: string | undefined): void {
+		this.ctx.statusLine.setCavemanModeStatus(level === undefined ? undefined : { level });
 		this.ctx.ui.requestRender();
 	}
 

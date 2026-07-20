@@ -75,6 +75,9 @@ export interface SegmentContext {
 	vibeMode: {
 		enabled: boolean;
 	} | null;
+	cavemanMode: {
+		level: string;
+	} | null;
 	collab: CollabStatus | null;
 	// Cached values for performance (computed once per render)
 	usageStats: {

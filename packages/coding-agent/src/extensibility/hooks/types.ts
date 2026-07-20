@@ -94,6 +94,8 @@ export interface HookUIContext {
 	 */
 	setStatus(key: string, text: string | undefined): void;
 
+	/** Set caveman mode level for the status line mode segment. Pass undefined to clear. */
+	setCavemanModeStatus(level: string | undefined): void;
 	/**
 	 * Show a custom component with keyboard focus.
 	 * The factory receives TUI, theme, and a done() callback to close the component.

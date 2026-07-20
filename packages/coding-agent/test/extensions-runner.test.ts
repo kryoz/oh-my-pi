@@ -1347,6 +1347,7 @@ describe("ExtensionRunner", () => {
 					notify: () => {},
 					onTerminalInput: () => () => {},
 					setStatus: () => {},
+					setCavemanModeStatus: () => {},
 					setWorkingMessage: () => {},
 					setWidget: () => {},
 					setFooter: () => {},

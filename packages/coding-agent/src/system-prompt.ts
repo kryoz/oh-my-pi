@@ -509,8 +509,9 @@ export interface BuildSystemPromptOptions {
 	xdevTools?: Array<{ name: string; summary: string }>;
 	/** Full docs + JSON schema for every `xd://`-mounted tool, inlined into the protocol section so no discovery `read` is needed. */
 	xdevDocs?: string;
-	/** Whether Auto-QA grievance reporting is enabled; renders the `xd://report_issue` note. */
 	autoQaEnabled?: boolean;
+	/** Lite mode active (OMP_LITE=1); hides premium URI schemes in the prompt. */
+	liteMode?: boolean;
 }
 
 /** Result of building provider-facing system prompt messages. */
@@ -557,6 +558,7 @@ export async function buildSystemPrompt(options: BuildSystemPromptOptions = {}):
 		xdevTools = [],
 		xdevDocs = "",
 		autoQaEnabled = false,
+		liteMode = false,
 		activeRepoContext: providedActiveRepoContext,
 	} = options;
 	const inlineToolDescriptors = providedInlineToolDescriptors ?? false;
@@ -813,6 +815,7 @@ export async function buildSystemPrompt(options: BuildSystemPromptOptions = {}):
 		xdevTools,
 		xdevDocs,
 		autoQaEnabled,
+		liteMode,
 	};
 	const rendered = prompt.render(resolvedCustomPrompt ? customSystemPromptTemplate : systemPromptTemplate, data);
 	const systemPrompt = [rendered];

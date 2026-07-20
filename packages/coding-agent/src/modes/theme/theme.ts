@@ -120,6 +120,7 @@ export type SymbolKey =
 	| "icon.host"
 	| "icon.session"
 	| "icon.package"
+	| "icon.campfire"
 	| "icon.warning"
 	| "icon.rewind"
 	| "icon.auto"
@@ -330,6 +331,7 @@ const UNICODE_SYMBOLS: SymbolMap = {
 	"icon.host": "🖥",
 	"icon.session": "🆔",
 	"icon.package": "📦",
+	"icon.campfire": "🔥",
 	"icon.warning": "⚠",
 	"icon.rewind": "↶",
 	"icon.auto": "⟲",
@@ -618,6 +620,8 @@ const NERD_SYMBOLS: SymbolMap = {
 	"icon.session": "\u{f0051}",
 	// pick:  | alt: 
 	"icon.package": "\uf487",
+	// pick:  (nf-fa-fire) | alt: 🔥
+	"icon.campfire": "\uf06d",
 	// pick:  | alt:  
 	"icon.warning": "\uf071",
 	// pick:  | alt:  ↺
@@ -850,6 +854,7 @@ const ASCII_SYMBOLS: SymbolMap = {
 	"icon.host": "host",
 	"icon.session": "id",
 	"icon.package": "[P]",
+	"icon.campfire": "fire",
 	"icon.warning": "[!]",
 	"icon.rewind": "<-",
 	"icon.auto": "[A]",
@@ -1850,6 +1855,7 @@ export class Theme {
 			host: this.#symbols["icon.host"],
 			session: this.#symbols["icon.session"],
 			package: this.#symbols["icon.package"],
+			campfire: this.#symbols["icon.campfire"],
 			warning: this.#symbols["icon.warning"],
 			rewind: this.#symbols["icon.rewind"],
 			auto: this.#symbols["icon.auto"],

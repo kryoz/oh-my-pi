@@ -4731,6 +4731,38 @@ export const SETTINGS_SCHEMA = {
 				"Use a small model to detect when the assistant says it will continue but stops without tool calls; automatically prompt it to continue.",
 		},
 	},
+	"caveman.level": {
+		type: "enum",
+		values: ["off", "lite", "full", "ultra", "wenyan-lite", "wenyan", "wenyan-ultra", "micro"] as const,
+		default: "full",
+		ui: {
+			tab: "interaction",
+			group: "Agent",
+			label: "Caveman Mode",
+			description: "Compress agent output to save tokens. 'off' disables; higher levels increase compression.",
+			options: [
+				{ value: "off", label: "Off", description: "Normal output" },
+				{ value: "lite", label: "Lite", description: "Professional, no fluff" },
+				{ value: "full", label: "Full", description: "Classic caveman" },
+				{ value: "ultra", label: "Ultra", description: "Maximum compression" },
+				{ value: "wenyan-lite", label: "Wenyan Lite", description: "Semi-classical Chinese" },
+				{ value: "wenyan", label: "Wenyan", description: "Full 文言文" },
+				{ value: "wenyan-ultra", label: "Wenyan Ultra", description: "Extreme 文言文" },
+				{ value: "micro", label: "Micro", description: "Experimental minimal mode" },
+			],
+		},
+	},
+	"caveman.showStatus": {
+		type: "boolean",
+		default: true,
+		ui: {
+			tab: "interaction",
+			group: "Agent",
+			label: "Caveman Status Bar",
+			description: "Show animated caveman level indicator in the status bar",
+			condition: "cavemanActive",
+		},
+	},
 	"providers.unexpectedStopModel": {
 		type: "enum",
 		values: TINY_MEMORY_MODEL_VALUES,

@@ -432,6 +432,8 @@ export interface ExecutorOptions {
 	 * set this false so disposal unregisters them instead of leaving idle peers.
 	 */
 	keepAlive?: boolean;
+	/** Lite mode active (inherited from parent session). */
+	liteMode?: boolean;
 }
 
 function parseStringifiedJson(value: unknown): unknown {
@@ -2552,8 +2554,8 @@ export async function runSubprocess(options: ExecutorOptions): Promise<SingleRes
 				mcpManager,
 				customTools: mcpProxyTools.length > 0 ? mcpProxyTools : undefined,
 				localProtocolOptions: options.localProtocolOptions,
+				liteMode: options.liteMode,
 				telemetry: subagentTelemetry,
-				parentEvalSessionId: options.parentEvalSessionId,
 				onFirstChatDispatch: () => {
 					firstChatDispatchAt ??= performance.now();
 				},

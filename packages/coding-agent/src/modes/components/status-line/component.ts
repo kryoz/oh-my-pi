@@ -276,6 +276,7 @@ export class StatusLineComponent implements Component {
 	#loopModeStatus: SegmentContext["loopMode"] = null;
 	#goalModeStatus: { enabled: boolean; paused: boolean } | null = null;
 	#vibeModeStatus: { enabled: boolean } | null = null;
+	#cavemanModeStatus: { level: string } | null = null;
 	#collabStatus: CollabStatus | null = null;
 	#focusedAgentId: string | undefined;
 	#activeRepoCache: ActiveRepoCache | undefined;
@@ -506,6 +507,10 @@ export class StatusLineComponent implements Component {
 
 	setVibeModeStatus(status: { enabled: boolean } | undefined): void {
 		this.#vibeModeStatus = status ?? null;
+	}
+
+	setCavemanModeStatus(status: { level: string } | undefined): void {
+		this.#cavemanModeStatus = status ?? null;
 	}
 
 	setCollabStatus(status: CollabStatus | null): void {
@@ -1066,6 +1071,7 @@ export class StatusLineComponent implements Component {
 					: null,
 			goalMode: this.#goalModeStatus,
 			vibeMode: this.#vibeModeStatus,
+			cavemanMode: this.#cavemanModeStatus,
 			collab: this.#collabStatus,
 			usageStats,
 			contextPercent,
